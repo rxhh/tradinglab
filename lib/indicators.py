@@ -9,6 +9,16 @@ PI = math.pi
 
 # Technical Analysis
 
+def Standard(df):
+    df['hl2'] = df[['high', 'low']].mean(axis=1)
+    df['hlc3'] = df[['high', 'low','close']].mean(axis=1)
+    df['hlcc4'] = df[['high', 'low','close', 'close']].mean(axis=1)
+    df['tr'] = TrueRange(df['high'], df['low'], df['close'])
+    if 'upVolume' in df.columns:
+        df['volume_delta'] = 2*df['upVolume'] - df['volume']
+    if 'upQuoteVolume' in df.columns:
+        df['quote_volume_delta'] = 2*df['upQuoteVolume'] - df['quoteVolume']
+
 def TrueRange(h, l, c):
     """ Standard TA true range
     """

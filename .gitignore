@@ -1,6 +1,6 @@
 secret.py
 data/
-.log
-.pyc
+*.log
+*.pyc
 .venv
 uv.lock
